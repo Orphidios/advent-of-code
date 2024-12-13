@@ -1,0 +1,24 @@
+{
+  "name": "advent-of-code",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "start": "sh ./scripts/run-day.sh",
+    "watch": "sh ./scripts/watch-day.sh"
+  },
+  "keywords": [
+    "advent-of-code",
+    "2024",
+    "nodejs",
+    "javascript"
+  ],
+  "author": "RIPOCHE Sylvain <orphidios@gmail.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^3.1.7",
+    "typescript": "^5.7.2"
+  }
+}
