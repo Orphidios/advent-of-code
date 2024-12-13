@@ -22,7 +22,7 @@ fi
 
 # Compiler les fichiers TypeScript
 echo "Compilation des fichiers TypeScript..."
-npx tsc
+npm run build
 
 # Vérifier si le fichier JavaScript compilé existe
 if [[ ! -f "dist/challenges/day$DAY/index.js" ]]; then
