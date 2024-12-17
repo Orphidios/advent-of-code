@@ -26,7 +26,9 @@ To set up the project locally, follow these steps:
     ```
 
 3. **Add your input when needed**:
-    TO DO
+
+Add your input file for each day in the `/inputs` folders in the form `day#.input.txt`.
+You can retrieve the file content with the `InputFileHelper.readDayInputFile` function
 
 Now you are ready to run and watch the solutions for the Advent of Code 2024 challenges.
 
@@ -34,6 +36,7 @@ Now you are ready to run and watch the solutions for the Advent of Code 2024 cha
 
 - `src/challenges/day#/index.ts`: Contains the TypeScript source code for each day.
 - `scripts/`: Contains useful scripts to run and watch the challenges.
+- `inputs`: Contains the input data for each day's challenge.
 
 ## Usage
 

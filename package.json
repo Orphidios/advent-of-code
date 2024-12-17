@@ -5,8 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "build": "tsc && npm run copy-inputs",
-    "copy-inputs": "copyfiles -u 1 src/**/*.txt dist/",
+    "build": "tsc",
     "start": "sh ./scripts/run-day.sh",
     "watch": "sh ./scripts/watch-day.sh"
   },
@@ -18,9 +17,11 @@
   ],
   "author": "RIPOCHE Sylvain <orphidios@gmail.com>",
   "license": "ISC",
+  "engines": {
+    "node": ">=16.0.0"
+  },
   "devDependencies": {
     "@types/node": "^22.10.2",
-    "copyfiles": "^2.4.1",
     "nodemon": "^3.1.7",
     "typescript": "^5.7.2"
   }
