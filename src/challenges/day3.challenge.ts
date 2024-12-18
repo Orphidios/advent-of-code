@@ -1,5 +1,51 @@
-// challenges/day1/index.ts
+import { Challenge } from "../common/challenge.class.js";
 
-console.log("Bienvenue au challenge Advent of Code 2024 - Jour 3");
+type Command = { instruction: 'do()' | 'don\'t()' } | { instruction: 'mul', numbers: [number, number] };
+type Day3Input = Command[];
 
-// Votre code pour le challenge du jour 1 commence ici
+export class Day3Challenge extends Challenge<Day3Input> {
+    DAY = 3;
+
+    protected runWithInput(input: Day3Input): void {
+        console.log('PART 1 : multiplyAndSum', this.multiplyAndSum(input));
+        console.log('PART 2 : muliplyAndSumIfEnabled', this.muliplyAndSumIfEnabled(input));
+    }
+
+    protected multiplyAndSum(input: Day3Input): number {
+        return input.reduce((acc, cmd) => {
+            if (cmd.instruction === 'mul') {
+                return acc + cmd.numbers[0] * cmd.numbers[1];
+            }
+            return acc;
+        }, 0);
+    }
+
+    protected muliplyAndSumIfEnabled(input: Day3Input): number {
+        let enabled = true;
+        return input.reduce((acc, cmd) => {
+            if (cmd.instruction === 'mul') {
+                return acc + (enabled ? cmd.numbers[0] * cmd.numbers[1] : 0)
+            }
+            enabled = cmd.instruction === 'do()';
+            return acc;
+        }, 0);
+    }
+
+    protected parseInput(input: string): Day3Input {
+        const regex = /do\(\)|don't\(\)|mul\((\d{1,3}),(\d{1,3})\)/g;
+        const matches = [...input.matchAll(regex)];
+        const parsedMatches = matches.map(match => {
+            if(match[1] && match[2]) {
+                return { 
+                    instruction: 'mul', 
+                    numbers: [parseInt(match[1], 10), 
+                    parseInt(match[2], 10)]
+                 };
+            }
+            return { instruction: match[0] };
+        });
+        return parsedMatches as Day3Input;
+    }
+}
+
+new Day3Challenge().run();
