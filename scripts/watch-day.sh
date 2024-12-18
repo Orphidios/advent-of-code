@@ -15,12 +15,12 @@ if [[ -z "$DAY" ]]; then
 fi
 
 # Vérifier si le fichier TypeScript existe
-if [[ ! -f "src/challenges/day$DAY/index.ts" ]]; then
-  echo "Erreur : Le fichier src/challenges/day$DAY/index.ts n'existe pas."
+if [[ ! -f "src/challenges/day$DAY.challenge.ts" ]]; then
+  echo "Erreur : Le fichier src/challenges/day$DAY.challenge.ts n'existe pas."
   exit 1
 fi
 
 # Lancer tsc en mode watch et nodemon pour surveiller les changements
 echo "Lancement de tsc en mode watch et nodemon..."
 npx tsc --watch &
-npx nodemon dist/challenges/day$DAY/index.js
+npx nodemon dist/challenges/day$DAY.challenge.js
