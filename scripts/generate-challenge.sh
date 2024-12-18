@@ -32,7 +32,7 @@ export class Day${DAY_NUMBER}Challenge extends Challenge<Day${DAY_NUMBER}Input> 
     }
 }
 
-new Day${DAY_NUMBER}Challenge().run();
+new Day${DAY_NUMBER}Challenge().run({ logging: true });
 EOL
 
 echo "Challenge file for Day ${DAY_NUMBER} created successfully at ${FILE_PATH}"
