@@ -7,7 +7,8 @@
   "scripts": {
     "build": "tsc",
     "start": "sh ./scripts/run-day.sh",
-    "watch": "sh ./scripts/watch-day.sh"
+    "watch": "sh ./scripts/watch-day.sh",
+    "generate-challenge": "sh ./scripts/generate-challenge.sh"
   },
   "keywords": [
     "advent-of-code",
