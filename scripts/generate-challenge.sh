@@ -12,24 +12,23 @@ FILE_PATH="./src/challenges/${FILE_NAME}"
 
 # Create the file with the template content
 cat <<EOL > $FILE_PATH
-import { Challenge } from "../common/challenge.class.js";
+import { Challenge } from '../common/challenge.class.js';
 
-type Day${DAY_NUMBER}Input = {
-    // Define the input structure here
-}
+type Day${DAY_NUMBER}Input = unknown; // TODO - Define the input type
 
 export class Day${DAY_NUMBER}Challenge extends Challenge<Day${DAY_NUMBER}Input> {
-    DAY = ${DAY_NUMBER};
+  DAY = ${DAY_NUMBER};
 
-    protected runWithInput(input: Day${DAY_NUMBER}Input): void {
-        // Implement the logic here
-    }
+  protected runWithInput(input: Day${DAY_NUMBER}Input): void {
+    console.log({ input });
+    // TODO - Implement the logic here
+  }
 
-    protected parseInput(input: string): Day${DAY_NUMBER}Input {
-        console.log('Raw input file for day ${DAY_NUMBER}', input);
-        // Parse the input string and return the input object
-        return {} as Day${DAY_NUMBER}Input;
-    }
+  protected parseInput(input: string): Day${DAY_NUMBER}Input {
+    console.log('Raw input file for day ${DAY_NUMBER}', input);
+    // TODO - Parse the input string and return the input object
+    return {} as Day${DAY_NUMBER}Input;
+  }
 }
 
 new Day${DAY_NUMBER}Challenge().run({ logging: true });
