@@ -16,11 +16,7 @@ export abstract class Challenge<InputType> {
       console.log(`Execution time: ${endTime - startTime} milliseconds`);
   }
 
-  protected runWithInput(input: InputType): void {
-    throw new Error('Method not implemented.');
-  }
+  protected abstract runWithInput(input: InputType): void;
 
-  protected parseInput(input: string): InputType {
-    throw new Error('Method not implemented.');
-  }
+  protected abstract parseInput(input: string): InputType;
 }

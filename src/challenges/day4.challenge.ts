@@ -72,10 +72,8 @@ export class Day4Challenge extends Challenge<Day4Input> {
     if (input[y][x] !== 'A') {
       return false;
     }
-    const descDiagonal =
-      input[y - 1]?.[x - 1] + input[y]?.[x] + input[y + 1]?.[x + 1];
-    const ascDiagonal =
-      input[y - 1]?.[x + 1] + input[y]?.[x] + input[y + 1]?.[x - 1];
+    const descDiagonal = input[y - 1]?.[x - 1] + 'A' + input[y + 1]?.[x + 1];
+    const ascDiagonal = input[y - 1]?.[x + 1] + 'A' + input[y + 1]?.[x - 1];
     return (
       (descDiagonal === 'MAS' || descDiagonal === 'SAM') &&
       (ascDiagonal === 'MAS' || ascDiagonal === 'SAM')
