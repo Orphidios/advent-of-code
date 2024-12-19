@@ -13,3 +13,6 @@ logs/
 
 # Ignore environment variables file
 .env
+
+# Ignore inputs file
+*.input.txt
