@@ -13,7 +13,7 @@ export abstract class Challenge<InputType> {
     this.runWithInput(this.parseInput(rawInput));
     const endTime = performance.now();
     if (options.logging)
-      console.log(`Execution time: ${endTime - startTime} milliseconds`);
+      console.log(`\nExecution time: ${endTime - startTime} milliseconds`);
   }
 
   protected abstract runWithInput(input: InputType): void;
