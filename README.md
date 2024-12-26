@@ -1,6 +1,7 @@
 # Advent of Code 2024
 
 ## Table of Contents
+
 - [Description](#description)
 - [Installation](#installation)
 - [Project Structure](#project-structure)
@@ -15,15 +16,17 @@
 To set up the project locally, follow these steps:
 
 1. **Clone the repository**:
-    ```bash
-    git clone https://github.com/Orphidios/advent-of-code.git
-    cd advent-of-code
-    ```
+
+   ```bash
+   git clone https://github.com/Orphidios/advent-of-code.git
+   cd advent-of-code
+   ```
 
 2. **Install dependencies**:
-    ```bash
-    npm install
-    ```
+
+   ```bash
+   npm install
+   ```
 
 3. **Add your input when needed**:
 
@@ -34,8 +37,8 @@ Now you are ready to run and watch the solutions for the Advent of Code 2024 cha
 
 ## Project Structure
 
-- `src/challenges/day#/index.ts`: Contains the TypeScript source code for each day.
-- `scripts/`: Contains useful scripts to run and watch the challenges.
+- `src/challenges/day#.challenge.ts`: Contains the TypeScript source code for each day.
+- `scripts/`: Contains useful scripts to run, watch and generate the challenges.
 - `inputs`: Contains the input data for each day's challenge.
 
 ## Usage
