@@ -7,6 +7,7 @@
   "scripts": {
     "build": "tsc",
     "start": "sh ./scripts/run-challenge.sh",
+    "all": "sh ./scripts/run-all-challenges.sh",
     "watch": "sh ./scripts/watch-challenge.sh",
     "generate-challenge": "sh ./scripts/generate-challenge.sh",
     "prettier": "prettier --write 'src/**/*.{js,ts,tsx,json,css,md}'"
