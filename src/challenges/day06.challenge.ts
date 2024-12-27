@@ -1,4 +1,4 @@
-import { Challenge } from '../common/challenge.class.js';
+import { Challenge, ChallengeSolution } from '../common/challenge.class.js';
 
 type Day6Input = string[][]; // Y, X
 const DIRECTION_MAP_ORDER = [
@@ -14,11 +14,13 @@ export class Day6Challenge extends Challenge<Day6Input> {
   private obstructionPos: Set<string> = new Set();
   private grid: Day6Input;
 
-  protected runWithInput(input: Day6Input): void {
+  protected runWithInput(input: Day6Input): ChallengeSolution {
     this.grid = input;
     this.resolveGrid();
-    console.log('Nb of distinct visited pos:', this.visitedPos.size);
-    console.log('Nb of valid obstructions pos:', this.obstructionPos.size);
+    return {
+      part1: ['Nb of distinct visited pos', this.visitedPos.size],
+      part2: ['Nb of valid obstructions pos', this.obstructionPos.size],
+    };
   }
 
   protected resolveGrid(): void {

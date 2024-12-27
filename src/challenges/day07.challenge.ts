@@ -1,4 +1,4 @@
-import { Challenge } from '../common/challenge.class.js';
+import { Challenge, ChallengeSolution } from '../common/challenge.class.js';
 
 type Equation = {
   targetValue: number;
@@ -10,12 +10,13 @@ type Day7Input = Equation[];
 export class Day7Challenge extends Challenge<Day7Input> {
   DAY = 7;
 
-  protected runWithInput(input: Day7Input): void {
+  protected runWithInput(input: Day7Input): ChallengeSolution {
     const resultPart1 = this.calculateSum(input, false);
-    console.log('Sum of solution values with + and *:', resultPart1);
-
     const resultPart2 = this.calculateSum(input, true);
-    console.log('Sum of solution values with +, * and ||:', resultPart2);
+    return {
+      part1: ['Sum of solution values with + and *', resultPart1],
+      part2: ['Sum of solution values with +, * and ||', resultPart2],
+    };
   }
 
   private calculateSum(input: Day7Input, withConcatOperator: boolean): number {
@@ -52,7 +53,6 @@ export class Day7Challenge extends Challenge<Day7Input> {
   }
 
   protected parseInput(input: string): Day7Input {
-    console.log('Raw input file for day 7', input);
     return input
       .split('\n')
       .filter((line) => line.length > 0)

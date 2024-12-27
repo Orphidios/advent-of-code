@@ -1,4 +1,4 @@
-import { Challenge } from '../common/challenge.class.js';
+import { Challenge, ChallengeSolution } from '../common/challenge.class.js';
 
 type Day8Input = string[][];
 type Position = { x: number; y: number };
@@ -9,16 +9,17 @@ export class Day8Challenge extends Challenge<Day8Input> {
   MAX_X: number;
   MAX_Y: number;
 
-  protected runWithInput(input: Day8Input): void {
+  protected runWithInput(input: Day8Input): ChallengeSolution {
     const frequencyMap = this.createFrequencyMap(input);
-    const antinodesCount = this.findAntinodes(frequencyMap).size;
-    const antinodesWithHarmonicsCount = this.findAntinodes(
-      frequencyMap,
-      true,
-    ).size;
-
-    console.log('Number of Antinodes:', antinodesCount);
-    console.log('With harmonics:', antinodesWithHarmonicsCount);
+    const antinodes = this.findAntinodes(frequencyMap);
+    const antinodesWithHarmonics = this.findAntinodes(frequencyMap, true);
+    return {
+      part1: ['Number of Antinodes', antinodes.size],
+      part2: [
+        'Number of Antinodes with harmonics',
+        antinodesWithHarmonics.size,
+      ],
+    };
   }
 
   protected findAntinodes(

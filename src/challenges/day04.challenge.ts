@@ -1,4 +1,4 @@
-import { Challenge } from '../common/challenge.class.js';
+import { Challenge, ChallengeSolution } from '../common/challenge.class.js';
 
 type Day4Input = string[][];
 
@@ -7,9 +7,11 @@ export class Day4Challenge extends Challenge<Day4Input> {
   maxheight = 0;
   maxwidth = 0;
 
-  protected runWithInput(input: Day4Input): void {
-    console.log('PART 1 : count XMAS', this.countAllXmas(input));
-    console.log('PART 2 : count X_MAS', this.countAllX_MAS(input));
+  protected runWithInput(input: Day4Input): ChallengeSolution {
+    return {
+      part1: ['XMAS count', this.countAllXmas(input)],
+      part2: ['X_MAS count', this.countAllX_MAS(input)],
+    };
   }
 
   protected countAllXmas(input: Day4Input): number {

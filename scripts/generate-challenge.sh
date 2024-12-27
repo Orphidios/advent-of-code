@@ -19,9 +19,10 @@ type Day${DAY}Input = unknown; // TODO - Define the input type
 export class Day${DAY}Challenge extends Challenge<Day${DAY}Input> {
   DAY = ${DAY};
 
-  protected runWithInput(input: Day${DAY}Input): void {
+  protected runWithInput(input: Day${DAY}Input): ChallengeSolution {
     console.log({ input });
     // TODO - Implement the logic here
+    return { part1: ['TODO', 0], part2: ['TODO', 0] };
   }
 
   protected parseInput(input: string): Day${DAY}Input {

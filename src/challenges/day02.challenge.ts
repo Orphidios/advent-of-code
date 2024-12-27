@@ -1,4 +1,4 @@
-import { Challenge } from '../common/challenge.class.js';
+import { Challenge, ChallengeSolution } from '../common/challenge.class.js';
 
 type Day2Input = number[][];
 enum ReportLevel {
@@ -9,12 +9,14 @@ enum ReportLevel {
 export class Day2Challenge extends Challenge<Day2Input> {
   DAY = 2;
 
-  protected runWithInput(reports: Day2Input): void {
-    console.log('PART 1 : validReports', this.countValidReports(reports));
-    console.log(
-      'PART 2 : validReportsWithDampener',
-      this.countValidReports(reports, true),
-    );
+  protected runWithInput(reports: Day2Input): ChallengeSolution {
+    return {
+      part1: ['Valid reports', this.countValidReports(reports)],
+      part2: [
+        'Valid reports with dampener',
+        this.countValidReports(reports, true),
+      ],
+    };
   }
 
   protected parseInput(input: string): Day2Input {
@@ -91,4 +93,4 @@ export class Day2Challenge extends Challenge<Day2Input> {
   }
 }
 
-new Day2Challenge().run();
+new Day2Challenge().run({ logging: true });

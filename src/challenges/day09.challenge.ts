@@ -1,4 +1,4 @@
-import { Challenge } from '../common/challenge.class.js';
+import { Challenge, ChallengeSolution } from '../common/challenge.class.js';
 
 type FileBlock = string[];
 type DiskMap = Array<FileBlock>;
@@ -7,14 +7,19 @@ type DiskState = string[];
 export class Day9Challenge extends Challenge<DiskMap> {
   DAY = 9;
 
-  protected runWithInput(diskMap: DiskMap): void {
-    console.log('\nCompact by moving file blocks one by one:');
+  protected runWithInput(diskMap: DiskMap): ChallengeSolution {
     const compactedDisk = this.compactByMovingBlocks(diskMap);
-    console.log('checkSum:', this.calculateChecksum(compactedDisk));
-
-    console.log('\nCompact by moving entire files:');
     const compactedDiskByFiles = this.compactByMovingFiles(diskMap);
-    console.log('checkSum:', this.calculateChecksum(compactedDiskByFiles));
+    return {
+      part1: [
+        'Checksum after compacting by blocks',
+        this.calculateChecksum(compactedDisk),
+      ],
+      part2: [
+        'Checksum after compacting by files',
+        this.calculateChecksum(compactedDiskByFiles),
+      ],
+    };
   }
 
   protected compactByMovingBlocks(diskMap: DiskMap): DiskState {

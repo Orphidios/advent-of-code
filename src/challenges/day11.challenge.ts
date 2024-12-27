@@ -1,15 +1,17 @@
-import { Challenge } from '../common/challenge.class.js';
+import { Challenge, ChallengeSolution } from '../common/challenge.class.js';
 
 type Day11Input = Map<number, number>;
 
 export class Day11Challenge extends Challenge<Day11Input> {
   DAY = 11;
 
-  protected runWithInput(input: Day11Input): void {
-    const firstPart = this.repeatBlink(input, 25);
-    console.log('After 25 Blinks:', this.countStones(firstPart));
-    const secondPart = this.repeatBlink(firstPart, 50);
-    console.log('After 75 Blinks:', this.countStones(secondPart));
+  protected runWithInput(input: Day11Input): ChallengeSolution {
+    const after25Blinks = this.repeatBlink(input, 25);
+    const after75Blinks = this.repeatBlink(after25Blinks, 50);
+    return {
+      part1: ['After 25 Blinks', this.countStones(after25Blinks)],
+      part2: ['After 75 Blinks', this.countStones(after75Blinks)],
+    };
   }
 
   protected countStones(stones: Day11Input): number {

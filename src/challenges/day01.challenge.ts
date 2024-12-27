@@ -1,4 +1,4 @@
-import { Challenge } from '../common/challenge.class.js';
+import { Challenge, ChallengeSolution } from '../common/challenge.class.js';
 
 type Day1Input = {
   leftList: number[];
@@ -8,15 +8,17 @@ type Day1Input = {
 class Day1Challenge extends Challenge<Day1Input> {
   DAY = 1;
 
-  protected runWithInput(input: Day1Input): void {
-    console.log(
-      'PART 1 : distanceBetweenList',
-      this.distanceBetweenList(input.leftList, input.rightList),
-    );
-    console.log(
-      'PART 2 : similarityBetweenList',
-      this.similarityBetweenList(input.leftList, input.rightList),
-    );
+  protected runWithInput(input: Day1Input): ChallengeSolution {
+    return {
+      part1: [
+        'Distance between list',
+        this.distanceBetweenList(input.leftList, input.rightList),
+      ],
+      part2: [
+        'Similarity between list',
+        this.similarityBetweenList(input.leftList, input.rightList),
+      ],
+    };
   }
 
   protected parseInput(input: string): Day1Input {
@@ -66,4 +68,4 @@ class Day1Challenge extends Challenge<Day1Input> {
   }
 }
 
-new Day1Challenge().run();
+new Day1Challenge().run({ logging: true });

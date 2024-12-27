@@ -1,4 +1,4 @@
-import { Challenge } from '../common/challenge.class.js';
+import { Challenge, ChallengeSolution } from '../common/challenge.class.js';
 
 type Day5Input = {
   rules: [number, number][];
@@ -8,10 +8,11 @@ type Day5Input = {
 export class Day5Challenge extends Challenge<Day5Input> {
   DAY = 5;
 
-  protected runWithInput(input: Day5Input): void {
+  protected runWithInput(input: Day5Input): ChallengeSolution {
     const validUpdates = input.updates.filter((update) =>
       this.isValidUpdate(update, input.rules),
     );
+
     const invalidUpdates = input.updates.filter(
       (update) => !this.isValidUpdate(update, input.rules),
     );
@@ -20,19 +21,20 @@ export class Day5Challenge extends Challenge<Day5Input> {
       (sum, update) => sum + this.getMiddlePage(update),
       0,
     );
-    console.log('Sum of middle pages (valid updates):', middlePagesSumValid);
 
     const reorderedUpdates = invalidUpdates.map((update) =>
       this.reorderUpdate(update, input.rules),
     );
+
     const middlePagesSumInvalid = reorderedUpdates.reduce(
       (sum, update) => sum + this.getMiddlePage(update),
       0,
     );
-    console.log(
-      'Sum of middle pages (reordered updates):',
-      middlePagesSumInvalid,
-    );
+
+    return {
+      part1: ['Sum of middle pages (valid updates)', middlePagesSumValid],
+      part2: ['Sum of middle pages (reordered updates)', middlePagesSumInvalid],
+    };
   }
 
   protected parseInput(input: string): Day5Input {

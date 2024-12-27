@@ -1,4 +1,4 @@
-import { Challenge } from '../common/challenge.class.js';
+import { Challenge, ChallengeSolution } from '../common/challenge.class.js';
 
 type Day10Input = number[][];
 type Position = [number, number];
@@ -8,7 +8,7 @@ export class Day10Challenge extends Challenge<Day10Input> {
   MAX_X: number;
   MAX_Y: number;
 
-  protected runWithInput(input: Day10Input): void {
+  protected runWithInput(input: Day10Input): ChallengeSolution {
     const [totalScore, totalRating] = this.findTrailheads(input)
       .map((trailhead) => this.analyzeTrailheadPaths(input, trailhead))
       .reduce(
@@ -18,9 +18,10 @@ export class Day10Challenge extends Challenge<Day10Input> {
         ],
         [0, 0],
       );
-
-    console.log('Final score:', totalScore);
-    console.log('Final rating:', totalRating);
+    return {
+      part1: ['Final score', totalScore],
+      part2: ['Final rating', totalRating],
+    };
   }
 
   protected findTrailheads(map: Day10Input): Position[] {

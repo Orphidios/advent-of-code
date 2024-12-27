@@ -1,4 +1,4 @@
-import { Challenge } from '../common/challenge.class.js';
+import { Challenge, ChallengeSolution } from '../common/challenge.class.js';
 
 type Command =
   | { instruction: 'do()' | "don't()" }
@@ -8,12 +8,11 @@ type Day3Input = Command[];
 export class Day3Challenge extends Challenge<Day3Input> {
   DAY = 3;
 
-  protected runWithInput(input: Day3Input): void {
-    console.log('PART 1 : multiplyAndSum', this.multiplyAndSum(input));
-    console.log(
-      'PART 2 : muliplyAndSumIfEnabled',
-      this.muliplyAndSumIfEnabled(input),
-    );
+  protected runWithInput(input: Day3Input): ChallengeSolution {
+    return {
+      part1: ['Multiply and sum', this.multiplyAndSum(input)],
+      part2: ['Muliply and sum if enabled', this.muliplyAndSumIfEnabled(input)],
+    };
   }
 
   protected multiplyAndSum(input: Day3Input): number {
@@ -52,4 +51,4 @@ export class Day3Challenge extends Challenge<Day3Input> {
   }
 }
 
-new Day3Challenge().run();
+new Day3Challenge().run({ logging: true });
