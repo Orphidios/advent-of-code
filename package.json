@@ -6,8 +6,8 @@
   "type": "module",
   "scripts": {
     "build": "tsc",
-    "start": "sh ./scripts/run-day.sh",
-    "watch": "sh ./scripts/watch-day.sh",
+    "start": "sh ./scripts/run-challenge.sh",
+    "watch": "sh ./scripts/watch-challenge.sh",
     "generate-challenge": "sh ./scripts/generate-challenge.sh",
     "prettier": "prettier --write 'src/**/*.{js,ts,tsx,json,css,md}'"
   },
