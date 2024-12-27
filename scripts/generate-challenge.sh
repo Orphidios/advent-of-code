@@ -12,7 +12,7 @@ FILE_PATH="./src/challenges/${FILE_NAME}"
 
 # Create the file with the template content
 cat <<EOL > $FILE_PATH
-import { Challenge } from '../common/challenge.class.js';
+import { Challenge, ChallengeSolution } from '../common/challenge.class.js';
 
 type Day${DAY}Input = unknown; // TODO - Define the input type
 
