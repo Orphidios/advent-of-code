@@ -48,8 +48,11 @@ export class Day2Challenge extends Challenge<Day2Input> {
       return true;
     }
 
-    for (let i = 0; i < indexToRemove.length; i++) {
-      const dampenedReport = report.toSpliced(indexToRemove[i], 1);
+    for (const index of indexToRemove) {
+      const dampenedReport = [
+        ...report.slice(0, index),
+        ...report.slice(index + 1),
+      ];
       if (this.analyseReport(dampenedReport).isValid) {
         return true;
       }
