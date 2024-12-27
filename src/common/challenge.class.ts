@@ -1,4 +1,4 @@
-import { InputFileHelper } from '../helpers/input-file-helper.js';
+import { InputFileHelper } from '../helpers/input-file.helper.js';
 
 type ChallengeOptions = {
   logging?: boolean;
