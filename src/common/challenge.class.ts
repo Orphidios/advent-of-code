@@ -14,18 +14,24 @@ export abstract class Challenge<InputType> {
 
   public run(options: ChallengeOptions = {}): void {
     console.log(`\n🗓️ Day ${this.DAY}`);
+
     const startTime = performance.now();
     const rawInput: string = InputFileHelper.readDayInputFile(this.DAY);
-    const solution = this.runWithInput(this.parseInput(rawInput));
+    if (!rawInput) return;
+
+    const parsedInput = this.parseInput(rawInput);
+    const solution = this.runWithInput(parsedInput);
     const endTime = performance.now();
+
     if (solution) {
       console.log(`\n 1️⃣ ${solution.part1[0]}:`, solution.part1[1]);
       console.log(` 2️⃣ ${solution.part2[0]}:`, solution.part2[1]);
     }
-    if (options.logging)
-      console.log(
-        `\n ⏱️ Execution time: ${(endTime - startTime).toFixed(2)} milliseconds`,
-      );
+
+    if (options.logging) {
+      const executionTime = (endTime - startTime).toFixed(2);
+      console.log(`\n ⏱️ Execution time: ${executionTime} milliseconds`);
+    }
   }
 
   protected abstract runWithInput(input: InputType): ChallengeSolution | void;
