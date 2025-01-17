@@ -42,7 +42,7 @@ export class Day16Challenge extends Challenge<Day16Input> {
     }
 
     const head = SearchHead.visitByMap.get(end.join(','))[0];
-    // this.printMap(grid);
+    // this.printMap(grid, head);
     return { bestWeight: head.weight, visitedBy: head.visited.size };
   }
 
@@ -70,20 +70,25 @@ export class Day16Challenge extends Challenge<Day16Input> {
   protected printMap(grid: Grid, givenHead?: SearchHead): void {
     const head = givenHead || SearchHead.getLowestWeightHead();
 
-    grid
-      .map((row, y) => {
-        return row.map((cell, x) => {
-          if (y === 0) return x % 10;
-          if (x === 0) return y % 10;
+    const getHeadNumber = (z: number): string =>
+      z % 10 === 0 ? `\x1b[31m${Math.floor(z / 10) % 10}\x1b[0m` : `${z % 10}`;
 
-          if (head.visited.has(`${y},${x}`)) return `\x1b[32mO\x1b[0m`;
-          if (cell === '.') return ' ';
-          return cell;
-        });
-      })
-      .forEach((row) => {
-        console.log(row.join(''));
-      });
+    const getCellWithColor = (cell: string): string => {
+      if (cell === '.') return ' ';
+      return `\x1b[30m${cell}\x1b[0m`;
+    };
+
+    const formatCell = (cell: string, y: number, x: number): string => {
+      if (y === 0) return getHeadNumber(x);
+      if (x === 0) return getHeadNumber(y);
+      return head.visited.has(`${y},${x}`)
+        ? `\x1b[32mO\x1b[0m`
+        : getCellWithColor(cell);
+    };
+
+    grid.forEach((row, y) => {
+      console.log(row.map((cell, x) => formatCell(cell, y, x)).join(''));
+    });
   }
 }
 
@@ -131,7 +136,8 @@ class SearchHead {
     if (grid[newY][newX] === '#') return;
 
     const visitedBy = SearchHead.visitByMap.get([newY, newX].join(','));
-    if (visitedBy?.length > 0) return;
+    if (visitedBy?.filter((head) => head.direction === direction).length > 0)
+      return;
 
     const newHead = new SearchHead(
       [this.position[0], this.position[1]],
