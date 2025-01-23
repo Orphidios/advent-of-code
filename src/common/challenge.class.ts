@@ -5,8 +5,8 @@ type ChallengeOptions = {
 };
 
 export type ChallengeSolution = {
-  part1: [string, number];
-  part2: [string, number];
+  part1: [string, number | string];
+  part2: [string, number | string];
 };
 
 export abstract class Challenge<InputType> {
