@@ -10,10 +10,10 @@ DAY=$(printf "%02d" $1)
 CHALLENGE_FILE="src/challenges/day$DAY.challenge.ts"
 COMPILED_FILE="dist/challenges/day$DAY.challenge.js"
 
-# Check if the TypeScript file exists
+# Generate the challenge file if it does not exist
 if [[ ! -f "$CHALLENGE_FILE" ]]; then
-  echo "Error: The file $CHALLENGE_FILE does not exist."
-  exit 1
+  echo "The file $CHALLENGE_FILE does not exist. Generating it..."
+  ./scripts/generate-challenge.sh $1
 fi
 
 # Compile the TypeScript files
