@@ -34,7 +34,7 @@ export class Day14Challenge extends Challenge<Day14Input> {
         this.calculatePositionAfterXSeconds(robot, i),
       );
       if (this.hasTreeInGrid(points)) {
-        this.printPoints(points);
+        // this.printPoints(points);
         return i;
       }
     }
