@@ -31,9 +31,9 @@ To set up the project locally, follow these steps:
 3. **Add your input when needed**:
 
 Add your input file for each day in the `/inputs` folders in the form `day#.input.txt`.
-You can retrieve the file content with the `InputFileHelper.readDayInputFile` function
+You can retrieve the file content with the `InputFileHelper.readDayInputFile` function.
 
-Now you are ready to run and watch the solutions for the Advent of Code 2024 challenges.
+Now you are ready to run the solutions for the Advent of Code 2024 challenges.
 
 ## Project Structure
 
@@ -46,11 +46,11 @@ Now you are ready to run and watch the solutions for the Advent of Code 2024 cha
 To run the solution for a specific day, use the following command:
 
 ```bash
-npm run start -- --day=1
+npm run start 1
 ```
 
 To watch the solution for a specific day and automatically re-run it when changes are detected, use the following command:
 
 ```bash
-npm run watch -- --day=1
+npm run watch 1
 ```
